@@ -1,35 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import storage from '../storage.js';
 
-const EditTask = ({ task, onEdit }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState(task.title);
-  const [description, setDescription] = useState(task.description);
+const EditTask = ({ task, onClose, onSave }) => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
-  const handleEdit = () => {
-    const updatedTask = { ...task, title, description };
-    onEdit(updatedTask);
-    setIsEditing(false);
+  useEffect(() => {
+    if (task) {
+      setTitle(task.title);
+      setDescription(task.description);
+    }
+  }, [task]);
+
+  const handleSave = () => {
+    const updatedTask = {
+      id: task.id,
+      title,
+      description,
+    };
+    storage.updateTask(task.id, updatedTask);
+    onSave(updatedTask);
+    onClose();
   };
 
   return (
-    <div>
-      {isEditing ? (
-        <div>
+    <>
+      <div className="modal">
+        <div className="modal__content">
           <input
+            id="editTitleInput"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <input
+          <textarea
+            id="editDescriptionInput"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <button onClick={handleEdit}>Save</button>
-          <button onClick={() => setIsEditing(false)}>Cancel</button>
+          <div id="modalButtons">
+            <button id="saveButton" onClick={handleSave}>Save</button>
+            <button id="closeModal" onClick={onClose}>Cancel</button>
+          </div>
         </div>
-      ) : (
-        <button onClick={() => setIsEditing(true)}>Edit</button>
-      )}
-    </div>
+      </div>
+      <div className="overlay" onClick={onClose}></div>
+    </>
   );
 };
 

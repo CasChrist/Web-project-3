@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import EditTask from "./EditTask";
+import EditTask from "./editTask";
 import ActionBar from "./actionBar";
 import ViewTask from "./viewTask";
 
 const TaskItem = ({ task, updateTask, deleteTask }) => {
-  const [isEditing, setIsEditing] = useState(false);
   const [showActions, setShowActions] = useState(false);
   const [showViewTask, setShowViewTask] = useState(false);
+  const [showEditTask, setShowEditTask] = useState(false);
 
   const handleEdit = (updatedTask) => {
     updateTask(task.id, updatedTask);
-    setIsEditing(false);
+    setShowEditTask(false);
   };
 
   const toggleActions = () => {
@@ -23,6 +23,14 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
 
   const closeViewTask = () => {
     setShowViewTask(false);
+  };
+
+  const openEditTask = () => {
+    setShowEditTask(true);
+  };
+
+  const closeEditTask = () => {
+    setShowEditTask(false);
   };
 
   return (
@@ -47,13 +55,15 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
       {showActions && (
         <ActionBar
           taskID={task.id}
-          onEdit={() => setIsEditing(true)}
+          onEdit={openEditTask}
           onView={openViewTask}
         />
       )}
 
-      {showViewTask && (
-        <ViewTask task={task} onClose={closeViewTask} />
+      {showViewTask && <ViewTask task={task} onClose={closeViewTask} />}
+
+      {showEditTask && (
+        <EditTask task={task} onClose={closeEditTask} onSave={handleEdit} />
       )}
     </div>
   );
