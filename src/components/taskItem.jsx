@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import EditTask from "./EditTask";
 import ActionBar from "./actionBar";
+import ViewTask from "./viewTask";
 
 const TaskItem = ({ task, updateTask, deleteTask }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [showActions, setShowActions] = useState(false);
+  const [showViewTask, setShowViewTask] = useState(false);
 
   const handleEdit = (updatedTask) => {
     updateTask(task.id, updatedTask);
@@ -13,6 +15,14 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
 
   const toggleActions = () => {
     setShowActions(!showActions);
+  };
+
+  const openViewTask = () => {
+    setShowViewTask(true);
+  };
+
+  const closeViewTask = () => {
+    setShowViewTask(false);
   };
 
   return (
@@ -35,7 +45,15 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
       </div>
 
       {showActions && (
-        <ActionBar taskID={task.id} onEdit={() => setIsEditing(true)} />
+        <ActionBar
+          taskID={task.id}
+          onEdit={() => setIsEditing(true)}
+          onView={openViewTask}
+        />
+      )}
+
+      {showViewTask && (
+        <ViewTask task={task} onClose={closeViewTask} />
       )}
     </div>
   );

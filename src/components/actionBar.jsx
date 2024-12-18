@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ShareTask from "./shareTask";
 
-const ActionBar = ({ taskID, onEdit }) => {
+const ActionBar = ({ taskID, onEdit, onView }) => {
   const [showShareTask, setShowShareTask] = useState(false);
 
   const toggleShareTask = () => {
@@ -13,7 +13,7 @@ const ActionBar = ({ taskID, onEdit }) => {
       <div className="tasks-elem-container__actions">
         <button
           className="tasks-elem-container__actions-details"
-          onClick={() => alert(`Details for task ID: ${taskID}`)}
+          onClick={() => onView(taskID)}
         >
           i
         </button>
