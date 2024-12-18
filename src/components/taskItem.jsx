@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import EditTask from "./editTask";
 import ActionBar from "./actionBar";
 import ViewTask from "./viewTask";
+import ConfirmationModal from "./confirmationModal";
+import storage from "../storage.js";
 
 const TaskItem = ({ task, updateTask, deleteTask }) => {
   const [showActions, setShowActions] = useState(false);
   const [showViewTask, setShowViewTask] = useState(false);
   const [showEditTask, setShowEditTask] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleEdit = (updatedTask) => {
     updateTask(task.id, updatedTask);
@@ -33,6 +36,19 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
     setShowEditTask(false);
   };
 
+  const openConfirmationModal = () => {
+    setShowConfirmation(true);
+  };
+
+  const closeConfirmationModal = () => {
+    setShowConfirmation(false);
+  };
+
+  const handleDelete = () => {
+    deleteTask(task.id);
+    closeConfirmationModal();
+  };
+
   return (
     <div className="tasks-elem-container">
       <div
@@ -46,7 +62,7 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
         </div>
         <button
           className="tasks-elem__delete outline"
-          onClick={() => deleteTask(task.id)}
+          onClick={openConfirmationModal}
         >
           X
         </button>
@@ -64,6 +80,14 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
 
       {showEditTask && (
         <EditTask task={task} onClose={closeEditTask} onSave={handleEdit} />
+      )}
+
+      {showConfirmation && (
+        <ConfirmationModal
+          message="Delete this task?"
+          onConfirm={handleDelete}
+          onCancel={closeConfirmationModal}
+        />
       )}
     </div>
   );
