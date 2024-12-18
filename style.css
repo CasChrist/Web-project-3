@@ -32,6 +32,7 @@ button:focus, button:hover {
   height: 100%;
   background-color: rgba(7, 7, 7, 0.89);
   z-index: 999;
+  cursor: default;
 }
 
 .createTaskContainer {
@@ -104,6 +105,10 @@ button:focus, button:hover {
   justify-content: center;
   width: 100%;
   gap: 8px;
+  cursor: move;
+}
+.tasks-elem-container.dragging {
+  opacity: 0.5;
 }
 .tasks-elem-container-shape {
   display: flex;
@@ -229,6 +234,7 @@ button:focus, button:hover {
   max-height: 451px;
   width: 100%;
   height: 100%;
+  cursor: default;
 }
 .modal__content {
   display: flex;
@@ -300,6 +306,7 @@ button:focus, button:hover {
   max-height: 451px;
   width: 100%;
   height: 100%;
+  cursor: default;
 }
 .modal__content {
   display: flex;
@@ -377,6 +384,7 @@ button:focus, button:hover {
   max-height: 76px;
   width: 100%;
   height: 100%;
+  cursor: default;
 }
 .share__content {
   display: flex;

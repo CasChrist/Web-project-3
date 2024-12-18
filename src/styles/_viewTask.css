@@ -10,6 +10,10 @@
   justify-content: center;
   width: 100%;
   gap: 8px;
+  cursor: move;
+}
+.tasks-elem-container.dragging {
+  opacity: 0.5;
 }
 .tasks-elem-container-shape {
   display: flex;

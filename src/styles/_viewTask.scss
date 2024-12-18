@@ -16,6 +16,11 @@ $font-color: #F0E3CA;
     justify-content: center;
     width: 100%;
     gap: 8px;
+    cursor: move;
+
+    &.dragging {
+      opacity: 0.5;
+    }
 
     &-shape {
       display: flex;

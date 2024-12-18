@@ -29,7 +29,12 @@ const App = () => {
   return (
     <div className="createTaskContainer">
       <CreateTask addTask={addTask} />
-      <TaskList tasks={tasks} updateTask={updateTask} deleteTask={deleteTask} />
+      <TaskList
+        tasks={tasks}
+        updateTask={updateTask}
+        deleteTask={deleteTask}
+        setTasks={setTasks}
+      />
     </div>
   );
 };

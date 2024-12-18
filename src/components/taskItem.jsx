@@ -3,9 +3,8 @@ import EditTask from "./editTask";
 import ActionBar from "./actionBar";
 import ViewTask from "./viewTask";
 import ConfirmationModal from "./confirmationModal";
-import storage from "../storage.js";
 
-const TaskItem = ({ task, updateTask, deleteTask }) => {
+const TaskItem = ({ task, updateTask, deleteTask, onDrop, onDragOver, onDragStart, onDragEnd, isDragging }) => {
   const [showActions, setShowActions] = useState(false);
   const [showViewTask, setShowViewTask] = useState(false);
   const [showEditTask, setShowEditTask] = useState(false);
@@ -50,7 +49,14 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
   };
 
   return (
-    <div className="tasks-elem-container">
+    <div 
+      className={`tasks-elem-container ${isDragging ? 'dragging' : ''}`}
+      onDrop={onDrop}
+      onDragOver={onDragOver}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      draggable
+    >
       <div
         className="outline tasks-elem-container-shape"
         data-id={task.id}

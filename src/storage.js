@@ -27,6 +27,10 @@ class TaskLocalStorage {
     );
     localStorage.setItem(this.storageKey, JSON.stringify(tasks));
   }
+
+  setTasks(tasks) {
+    localStorage.setItem(this.storageKey, JSON.stringify(tasks));
+  }
 }
 
 const storage = new TaskLocalStorage("tasks");
