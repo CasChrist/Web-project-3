@@ -6,7 +6,7 @@ const ShareTask = ({ taskID }) => {
   };
 
   return (
-    <button onClick={handleShare}>Share</button>
+    <button onClick={handleShare}><img src="./src/assets/share.svg" alt="share"/></button>
   );
 };
 

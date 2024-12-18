@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CreateTask from './components/createTask';
 import TaskList from './components/taskList';
-import storage from './storage';
+import storage from './storage.js';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);

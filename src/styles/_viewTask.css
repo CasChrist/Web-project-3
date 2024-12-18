@@ -3,9 +3,18 @@
   flex-direction: column;
   gap: 16px;
 }
-.tasks-elem {
+.tasks-elem-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+}
+.tasks-elem-container-shape {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 16px 10px;
   border-radius: 8px;
@@ -13,20 +22,20 @@
   background-color: #1B1A17;
   border-color: #A35709;
 }
-.tasks-elem-text {
+.tasks-elem-container-text {
   display: flex;
   flex-direction: column;
 }
-.tasks-elem-text h3 {
+.tasks-elem-container-text h3 {
   font-size: 22px;
   font-weight: 500;
 }
-.tasks-elem-text p {
+.tasks-elem-container-text p {
   font-size: 14px;
   font-weight: 400;
   margin-top: 4px;
 }
-.tasks-elem button {
+.tasks-elem-container button {
   min-width: 32px;
   min-height: 32px;
   height: 32px;
@@ -35,14 +44,13 @@
   border-color: #A35709;
   color: #FF8303;
 }
-.tasks-elem__actions {
+.tasks-elem-container__actions {
   display: flex;
-  margin-top: -8px;
   width: 100%;
   justify-content: flex-end;
   gap: 8px;
 }
-.tasks-elem__actions button {
+.tasks-elem-container__actions button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,9 +62,9 @@
   border: 2px solid #A35709;
   background-color: #1F1E1B;
 }
-.tasks-elem__actions-details {
+.tasks-elem-container__actions-details {
   font-family: "Roboto";
   font-weight: 700;
   font-size: 16px;
-  color: white;
+  color: white !important;
 }

@@ -25,7 +25,8 @@ body {
 button {
   cursor: pointer;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: none;
     background-color: $primary-active;
   }
