@@ -5,12 +5,14 @@ $secondary-active: #A35709;
 $font-color: #F0E3CA;
 
 .share {
+  display: flex;
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   background-color: $primary-active;
-  padding: 14px 20px;
+  padding: 14px 0;
+  padding-right: 16px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   z-index: 1000;
@@ -21,7 +23,9 @@ $font-color: #F0E3CA;
 
   &__content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
   }
 
   &__icons {

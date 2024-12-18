@@ -362,12 +362,14 @@ button:focus, button:hover {
 }
 
 .share {
+  display: flex;
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   background-color: #1B1A17;
-  padding: 14px 20px;
+  padding: 14px 0;
+  padding-right: 16px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   z-index: 1000;
@@ -378,7 +380,9 @@ button:focus, button:hover {
 }
 .share__content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
 }
 .share__icons {
   background-color: #1B1A17;
